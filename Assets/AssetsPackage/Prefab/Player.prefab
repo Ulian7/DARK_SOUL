@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8381168909659498090}
   - component: {fileID: 2963943575810957764}
   - component: {fileID: 712210302614740511}
-  - component: {fileID: 1582228742613367443}
-  - component: {fileID: 2361127608374586997}
+  - component: {fileID: -3976240805010961134}
+  - component: {fileID: 1216732288027800980}
+  - component: {fileID: 2511121608926471139}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -80,15 +81,14 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   myTransform: {fileID: 0}
   animatorHandler: {fileID: 0}
-  rigidbody: {fileID: 0}
+  characterController: {fileID: 0}
   groundDetectionRayStartPoint: 0.5
-  minimumDistanceNeedToBeginFall: 1
+  minimumDistanceNeedToBeginFall: 2.5
   groundDetectionRayDistance: 0.2
   inAirTimer: 0
   movementSpeed: 5
   sprintSpeed: 7
   rotationSpeed: 10
-  fallingSpeed: 45
 --- !u!114 &2963943575810957764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   isSprinting: 0
   isInAir: 0
   isGrounded: 0
---- !u!143 &1582228742613367443
+--- !u!143 &-3976240805010961134
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,38 +141,41 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.5
-  m_Radius: 0.3
+  m_Height: 2
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!136 &2361127608374586997
-CapsuleCollider:
+--- !u!114 &1216732288027800980
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5682418576407212644}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531bc927cc80f4644ae971f78b7ef814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightWeapon: {fileID: 11400000, guid: 56b6c29e69cb2204c87d99d4cc4e08ab, type: 2}
+  leftWeapon: {fileID: 11400000, guid: dccb82656b131594d8b3cb32fd472ae9, type: 2}
+--- !u!114 &2511121608926471139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5682418576407212644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d53f0c0db47f94aa90f00a463cda05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &958473075494680680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,12 +243,42 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1302043834458988, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2194975370481974800}
+    - targetCorrespondingSourceObject: {fileID: 1302043834458988, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8028709861113258216}
+    - targetCorrespondingSourceObject: {fileID: 1184272453534882, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4707755019055585728}
+    - targetCorrespondingSourceObject: {fileID: 1399752147952042, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7840393564714686252}
   m_SourcePrefab: {fileID: 100100000, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
 --- !u!4 &955819194554444502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4202682932269758, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
   m_PrefabInstance: {fileID: 958473075494680680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &957326331669642442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1184272453534882, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
+  m_PrefabInstance: {fileID: 958473075494680680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4707755019055585728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957326331669642442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33044b67d7feac143ace21a2abc336c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 0}
+  isLeftHandSlot: 1
+  isRightHandSlot: 0
+  currentWeaponModel: {fileID: 0}
 --- !u!1 &957452649448266500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1302043834458988, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
@@ -265,3 +298,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   canRotate: 1
+--- !u!114 &8028709861113258216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957452649448266500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be58004f50dd124aada7c58d8419523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &957533057721539010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1399752147952042, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
+  m_PrefabInstance: {fileID: 958473075494680680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7840393564714686252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957533057721539010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33044b67d7feac143ace21a2abc336c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 962773491379878544}
+  isLeftHandSlot: 0
+  isRightHandSlot: 1
+  currentWeaponModel: {fileID: 0}
+--- !u!4 &962773491379878544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4885459389825784, guid: 2294f22d00a6b3840b6051548fe29ae2, type: 3}
+  m_PrefabInstance: {fileID: 958473075494680680}
+  m_PrefabAsset: {fileID: 0}

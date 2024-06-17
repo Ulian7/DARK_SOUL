@@ -44,6 +44,7 @@ namespace Ulian
         {
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
+            inputHandler.rb_Input = false;
             isSprinting = inputHandler.b_Input;
 
             if (isInAir)

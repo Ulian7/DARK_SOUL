@@ -43,6 +43,8 @@ Camera Holder控制绕 **Y** 轴方向的转动，Camera Pivot控制绕 **Local 
 
 为Top、Middle和Bottom设置了三个旋转轨道，高度在范围内的相机的位置会自动混合
 
+通过修改`m_YAxis.Value` （0~1）来调整镜头的高度，通过修改`Follow`对象的`Rotation`属性来保证虚拟相机能够初始化在`player`的正后方。
+
 #### Cinemachine Collider
 
 可以自动调节相机的位置以避免遮挡
@@ -78,3 +80,106 @@ void Update()
 ![](Images/Function_structure.png) 
 
 ### 6. Falling and Landing
+
+#### Character Controller
+
+使用SimpleMove来处理玩家的移动
+
+将重力调为原来的2倍避免位移过度
+
+#### 处理相关的动画
+
+```C#
+ if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeedToBeginFall, ignoreForGroundCheck))
+ {
+     playerManager.isGrounded = true;
+
+     if (playerManager.isInAir)
+     {
+         if(inAirTimer > 0.5)
+         {
+             animatorHandler.PlayTargetAnimation("Land", true);
+         }
+         else
+         {
+             //animatorHandler.PlayTargetAnimation("Empty", false);
+             inAirTimer = 0;
+         }
+         playerManager.isInAir = false;
+     }
+ }
+ else
+ {
+     if (playerManager.isGrounded)
+     {
+         playerManager.isGrounded = false;
+     }
+
+     if (playerManager.isInAir == false)
+     {
+         if (playerManager.isInteracting == false)
+         {
+             animatorHandler.PlayTargetAnimation("Falling", true);
+         }
+
+         playerManager.isInAir = true;
+     }
+ }
+```
+
+### 7. Weapon
+
+#### ScriptableObject
+
+- ScriptableObject的数据是存储在asset里的，因此它不会在退出时被重置数据
+
+- 这些资源在实例化的时候是可以被引用，而非复制
+
+- 类似其他资源，它可以被任何场景引用，即场景间共享
+
+- 在项目之间共享
+
+##### 生命周期
+
+- 当它是被绑定到.asset文件或者AssetBundle等资源文件中的时候，它就是persistent的
+  - 它可以通过Resources.UnloadUnusedAssets来被unload出内存
+  - 可以通过脚本引用或其他需要的时候被再次load到内存
+
+- 如果是通过CreateInstance<>来创建的，它就是非persistent的
+
+  - 它可以通过GC被直接destroy掉（如果没有任何引用的话）
+
+  - 如果不想被GC的话，可以使用HideFlags.HideAndDontSave
+
+##### 应用场景
+
+第一种最常见的就是数据对象和表格数据，我们可以在Assets下创建一个.asset文件，并在编辑器面板中编辑修改它，再提交这个唯一的一份资源给版本控制器。例如，本地化数据、清单目录、表格、敌人配置等（这些真的非常常见，目前我接触过的大部分都是通过json、xml文件或是Monobehaviour来实现的，json和xml文件对策划并不友好）。
+
+使用ScriptableObject的一个好处是你不需要考虑序列化的问题，但是我们也可以和Json这些进行配合（使用JsonUtility），既支持直接在编辑器里创建ScriptableObject，也支持在运行时刻通过读取Json文件来创建。例子是，内置 + 用户自定义的场景文件，我们可以在编辑器里设计一些场景存储成.asset文件，而在运行时刻玩家可以自己设计关卡存储在Json文件里，然后可以据此生成相应的ScriptableObject。
+
+我们经常会需要一个可以在场景间共享的Singleton对象，有时候我们就可以使用ScriptableObject + static instance variable的方法来解决，当场景变换的时候，我们可以使用Resources.FindObjectsOfTypeAll<>来找到已有的instance（当然这需要在实例化第一个instance的时候把它标识为instance.hideFlags = HideFlags.HideAndDontSave）。
+
+ScriptableObject除了可以存储数据外，我们还可以在ScriptableObject中定义一些方法，MonoBehaviour会把自身传递给ScriptableObject中的方法，然后ScriptableObject再进行一些工作。这类似于插槽设计模式，ScriptableObject提供一些槽，MonoBehaviour可以把自己插进去。适用于AI类型、加能量的buff或debuffs等。
+```C#
+abstract class PowerupEffect : ScriptableObject {
+    public abstract void ApplyTo(GameObject go);
+}
+
+[CreateAssetMenu]
+class HealthBooster : PowerupEffect {
+    public int Amount;
+    public override void ApplyTo(GameObject go) {
+        go.GetComponent<Health>().currentValue += Amount;
+    }
+}
+
+class Powerup : MonoBehaviour {
+    public PowerupEffect effect;
+    public void OnTriggerEnter(Collider other) {
+        effect.ApplyTo(other.gameObject);
+    }
+}
+```
+
+我们先声明了一个PowerupEffect抽象类，来规定所有的加能量技能都需要定义一个ApplyTo函数作用于玩家。然后，我们定义一个HealthBooster类来管理那些专门加血的技能，我们可以通过创建资源的方式创建多个加血技能的资源实例，它们每个都可以有不同的加血量（Amount），当传进来一个GameObject的时候，就可以给它加血。我们又定义了Powerup的MonoBehaviour类，把它作为Component赋给各个可以触发加血技能的物体，它们可以接受一个PowerupEffect类型的加能量技能，然后靠碰撞体触发加血行为。
+

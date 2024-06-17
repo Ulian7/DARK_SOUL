@@ -18,8 +18,7 @@ namespace Ulian
         [HideInInspector]
         public AnimatorHandler animatorHandler;
 
-        //TODO: Understand this 
-        public new Rigidbody rigidbody;
+        public CharacterController characterController;
 
         [Header("Ground & Air Detection Stats")]
         [SerializeField]
@@ -27,7 +26,7 @@ namespace Ulian
         [SerializeField]
         float minimumDistanceNeedToBeginFall = 1;
         [SerializeField]
-        float groundDetectionRayDistance = 0.2f;
+        float groundDetectionRayDistance = 0.3f;
         LayerMask ignoreForGroundCheck;
         public float inAirTimer;
 
@@ -38,13 +37,11 @@ namespace Ulian
         float sprintSpeed = 7;
         [SerializeField]
         float rotationSpeed = 10;
-        [SerializeField]
-        float fallingSpeed = 45;
 
         private void Start()
         {
             playerManager = GetComponent<PlayerManager>();
-            rigidbody = GetComponent<Rigidbody>();
+            characterController = GetComponent<CharacterController>();
             inputHandler = GetComponent<InputHandler>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
             cameraObject = Camera.main.transform;
@@ -56,8 +53,6 @@ namespace Ulian
         }
 
         #region Movement
-        Vector3 normalVector;
-        Vector3 targetPosition;
 
         private void HandleRotation(float delta)
         {
@@ -104,11 +99,8 @@ namespace Ulian
                 moveDirection *= speed;
             }
 
-            Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
-            rigidbody.velocity = projectedVelocity;
+            characterController.SimpleMove(moveDirection);
 
-            /* IEnumerator r = this.UpdateGhost(projectedVelocity);
-            this.StartCoroutine(r); */
             animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
 
             if (animatorHandler.canRotate)
@@ -147,74 +139,47 @@ namespace Ulian
             RaycastHit hit;
             Vector3 origin = myTransform.position;
             origin.y += groundDetectionRayStartPoint;
-            
-            if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
-            {
-                moveDirection = Vector3.zero;
-            }
 
-            if (playerManager.isInAir)
-            {
-                rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
-            }
-
-            Vector3 dir = moveDirection;
-            dir.Normalize();
-            origin = origin + dir * groundDetectionRayDistance;
-
-            targetPosition = myTransform.position;
+            origin = origin - myTransform.forward * groundDetectionRayDistance;
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeedToBeginFall, Color.red, 0.1f, false);
-            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeedToBeginFall, ignoreForGroundCheck))
+            if (!characterController.isGrounded)
             {
-                normalVector = hit.normal;
-                Vector3 tp = hit.point;
-                playerManager.isGrounded = true;
-                targetPosition.y = tp.y;
+                if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeedToBeginFall, ignoreForGroundCheck))
+                {
+                    playerManager.isGrounded = true;
 
-                if (playerManager.isInAir)
-                {
-                    if(inAirTimer > 0.5f)
+                    if (playerManager.isInAir)
                     {
-                        animatorHandler.PlayTargetAnimation("Land", true);
+                        if (inAirTimer > 0.5)
+                        {
+                            animatorHandler.PlayTargetAnimation("Land", true);
+                        }
+                        else
+                        {
+                            //animatorHandler.PlayTargetAnimation("Empty", false);
+                            inAirTimer = 0;
+                        }
+                        playerManager.isInAir = false;
                     }
-                    else
-                    {
-                        //animatorHandler.PlayTargetAnimation("Empty", false);
-                        inAirTimer = 0;
-                    }
-                    playerManager.isInAir = false;
                 }
-            }
-            else
-            {
-                if (playerManager.isGrounded)
+                else
                 {
-                    playerManager.isGrounded = false;
-                }
-
-                if (playerManager.isInAir == false)
-                {
-                    if (playerManager.isInteracting == false)
+                    if (playerManager.isGrounded)
                     {
-                        animatorHandler.PlayTargetAnimation("Falling", true);
+                        playerManager.isGrounded = false;
                     }
 
-                    Vector3 vel = rigidbody.velocity;
-                    vel.Normalize();
-                    rigidbody.velocity = vel * (movementSpeed / 2);
-                    playerManager.isInAir = true;
-                }
-            }
+                    if (playerManager.isInAir == false)
+                    {
+                        if (playerManager.isInteracting == false)
+                        {
+                            animatorHandler.PlayTargetAnimation("Falling", true);
+                        }
 
-            if (playerManager.isInteracting || inputHandler.moveAmount > 0)
-            {
-                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
-            }
-            else
-            {
-                myTransform.position = targetPosition;
+                        playerManager.isInAir = true;
+                    }
+                }
             }
         }
         #endregion

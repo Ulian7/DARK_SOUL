@@ -116,15 +116,10 @@ namespace Ulian
             
             
             float delta = Time.deltaTime;
-            playerLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = anim.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
-            playerLocomotion.rigidbody.velocity = velocity;
-
-            /*
-            IEnumerator r = playerLocomotion.UpdateGhost(velocity);
-            this.StartCoroutine(r);*/
+            playerLocomotion.characterController.SimpleMove(velocity);
         }
     }
 }

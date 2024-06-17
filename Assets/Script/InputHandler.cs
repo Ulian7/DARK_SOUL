@@ -12,14 +12,24 @@ namespace Ulian
         public float moveAmount;
 
         public bool b_Input;
-        
+        public bool rb_Input;
+
+
         public bool rollFlag;
         public bool sprintFlag;
         public float rollInputTimer;
 
         PlayerControls inputActions;
+        PlayerAttacker playerAttacker;
+        PlayerInventory playerInventory;
 
         Vector2 movementInput;
+
+        private void Awake()
+        {
+            playerAttacker = GetComponent<PlayerAttacker>();
+            playerInventory = GetComponent<PlayerInventory>();
+        }
 
         public void OnEnable()
         {
@@ -42,6 +52,7 @@ namespace Ulian
         {
             MoveInput(delta);
             RollInput(delta);
+            AttackInput(delta);
         }
 
         private void MoveInput(float delta)
@@ -68,6 +79,16 @@ namespace Ulian
                 }
 
                 rollInputTimer = 0;
+            }
+        }
+
+        private void AttackInput(float delta)
+        {
+            inputActions.PlayerActions.RB.performed += i => rb_Input = true;
+            
+            if (rb_Input)
+            {
+                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
             }
         }
     }
