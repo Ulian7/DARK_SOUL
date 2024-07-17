@@ -23,7 +23,7 @@ namespace Ulian
 
         public void UnloadWeaponAndDestroy()
         {
-            if (currentWeaponModel == null)
+            if (currentWeaponModel != null)
             {
                 Destroy(currentWeaponModel);
             }

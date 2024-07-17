@@ -3,10 +3,64 @@
   "WorkspaceRootPath": "D:\\DARK_SOUL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Lock_Step\\Network\\FSP\\Core\\FSPClient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\playerattacker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\playerattacker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Lock_Step\\Network\\FSP\\Core\\FSPCodec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\playerstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\playerstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\weaponslotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weaponslotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\enemystats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemystats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\animatorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\animatorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|d:\\dark_soul\\assets\\damagecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\damagecollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\damageplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\damageplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\weaponholderslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weaponholderslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\weaponitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weaponitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\game\\gameapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\game\\gameapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|D:\\DARK_SOUL\\assets\\script\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83558877-F13B-0FE3-85D5-AAB168F8F63D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -16,33 +70,198 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FSPCodec.cs",
-              "DocumentMoniker": "D:\\Lock_Step\\Network\\FSP\\Core\\FSPCodec.cs",
-              "RelativeDocumentMoniker": "..\\Lock_Step\\Network\\FSP\\Core\\FSPCodec.cs",
-              "ToolTip": "D:\\Lock_Step\\Network\\FSP\\Core\\FSPCodec.cs",
-              "RelativeToolTip": "..\\Lock_Step\\Network\\FSP\\Core\\FSPCodec.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "AnimatorHandler.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\AnimatorHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\AnimatorHandler.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\AnimatorHandler.cs",
+              "RelativeToolTip": "Assets\\Script\\AnimatorHandler.cs",
+              "ViewState": "AQIAAG4AAAAAAAAAAAAUwGYAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T08:41:55.06Z",
+              "WhenOpened": "2024-06-20T02:45:55.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InputHandler.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\InputHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\InputHandler.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\InputHandler.cs",
+              "RelativeToolTip": "Assets\\Script\\InputHandler.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAcwGUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T02:16:43.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Item.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\Item.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Item.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\Item.cs",
+              "RelativeToolTip": "Assets\\Script\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T02:16:42.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlayerManager.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\PlayerManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\PlayerManager.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\PlayerManager.cs",
+              "RelativeToolTip": "Assets\\Script\\PlayerManager.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAxwCQAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T02:15:47.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FSPClient.cs",
-              "DocumentMoniker": "D:\\Lock_Step\\Network\\FSP\\Core\\FSPClient.cs",
-              "RelativeDocumentMoniker": "..\\Lock_Step\\Network\\FSP\\Core\\FSPClient.cs",
-              "ToolTip": "D:\\Lock_Step\\Network\\FSP\\Core\\FSPClient.cs",
-              "RelativeToolTip": "..\\Lock_Step\\Network\\FSP\\Core\\FSPClient.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAOUAAAANAAAA",
+              "Title": "PlayerAttacker.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\PlayerAttacker.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\PlayerAttacker.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\PlayerAttacker.cs",
+              "RelativeToolTip": "Assets\\Script\\PlayerAttacker.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAADwvwoAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T06:06:25.254Z",
+              "WhenOpened": "2024-06-20T02:06:53.036Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerLocomotion.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\PlayerLocomotion.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\PlayerLocomotion.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\PlayerLocomotion.cs",
+              "RelativeToolTip": "Assets\\Script\\PlayerLocomotion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKcAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T07:32:38.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EnemyStats.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\EnemyStats.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\EnemyStats.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\EnemyStats.cs",
+              "RelativeToolTip": "Assets\\Script\\EnemyStats.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAADwvysAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T07:12:24.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerStats.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\PlayerStats.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\PlayerStats.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\PlayerStats.cs",
+              "RelativeToolTip": "Assets\\Script\\PlayerStats.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAADwvyQAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T03:00:33.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WeaponHolderSlot.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\WeaponHolderSlot.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\WeaponHolderSlot.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\WeaponHolderSlot.cs",
+              "RelativeToolTip": "Assets\\Script\\WeaponHolderSlot.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAwDcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T06:30:27.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WeaponItem.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\WeaponItem.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\WeaponItem.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\WeaponItem.cs",
+              "RelativeToolTip": "Assets\\Script\\WeaponItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T06:36:41.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GameApp.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\Game\\GameApp.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Game\\GameApp.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\Game\\GameApp.cs",
+              "RelativeToolTip": "Assets\\Script\\Game\\GameApp.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvxIAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T06:14:53.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WeaponSlotManager.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\WeaponSlotManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\WeaponSlotManager.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\WeaponSlotManager.cs",
+              "RelativeToolTip": "Assets\\Script\\WeaponSlotManager.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAIwDIAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T03:11:19.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DamageCollider.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\DamageCollider.cs",
+              "RelativeDocumentMoniker": "Assets\\DamageCollider.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\DamageCollider.cs",
+              "RelativeToolTip": "Assets\\DamageCollider.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAAAB8AAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T02:37:42.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DamagePlayer.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\DamagePlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\DamagePlayer.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\DamagePlayer.cs",
+              "RelativeToolTip": "Assets\\Script\\DamagePlayer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T11:48:48.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HealthBar.cs",
+              "DocumentMoniker": "D:\\DARK_SOUL\\Assets\\Script\\HealthBar.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HealthBar.cs",
+              "ToolTip": "D:\\DARK_SOUL\\Assets\\Script\\HealthBar.cs",
+              "RelativeToolTip": "Assets\\Script\\HealthBar.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T11:13:37.519Z"
             }
           ]
         }

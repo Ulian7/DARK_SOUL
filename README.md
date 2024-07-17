@@ -183,3 +183,25 @@ class Powerup : MonoBehaviour {
 
 我们先声明了一个PowerupEffect抽象类，来规定所有的加能量技能都需要定义一个ApplyTo函数作用于玩家。然后，我们定义一个HealthBooster类来管理那些专门加血的技能，我们可以通过创建资源的方式创建多个加血技能的资源实例，它们每个都可以有不同的加血量（Amount），当传进来一个GameObject的时候，就可以给它加血。我们又定义了Powerup的MonoBehaviour类，把它作为Component赋给各个可以触发加血技能的物体，它们可以接受一个PowerupEffect类型的加能量技能，然后靠碰撞体触发加血行为。
 
+### 8. 受击检测
+
+角色增加Capsule Collider，武器增加Box Collider，在攻击的动画中设置开启与关闭武器Collider的关键帧，并在动画末尾增加连击区间。
+
+### 9. 输入缓冲
+
+实现了翻滚和攻击的输入缓冲，允许玩家预输入一个指令。
+
+采用枚举类型`next_state`来保存玩家预输入的指令
+
+```C#
+    public enum next_state 
+    {
+        Null,
+        Roll,
+        Attack,
+        Item
+    }
+```
+
+
+

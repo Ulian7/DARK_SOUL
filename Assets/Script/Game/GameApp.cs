@@ -36,5 +36,7 @@ public class GameApp : UnitySingleton<GameApp>
 		cinemachineFreeLook.LookAt = ghostLocomotion.transform.Find("LookAt"); ;
 		cinemachineFreeLook.m_YAxis.Value = 0.7f;
 
-    }
+		GameObject UI = GameObject.Find("Player UI");
+		UI.GetComponent<UIManager>().playerInventory = player.GetComponent<PlayerInventory>();
+	}
 }

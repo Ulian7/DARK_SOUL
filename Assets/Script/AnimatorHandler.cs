@@ -11,6 +11,7 @@ namespace Ulian
         public Animator anim;
         InputHandler inputHandler;
         PlayerLocomotion playerLocomotion;
+        PlayerAttacker playerAttacker;
         int vertical;
         int horizontal;
         public bool canRotate;
@@ -21,8 +22,10 @@ namespace Ulian
             anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
+            playerAttacker = GetComponentInParent<PlayerAttacker>();
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
+            anim.SetBool("canJump", true);
         }
 
         public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
@@ -92,10 +95,14 @@ namespace Ulian
             anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
         }
 
-        public void PlayTargetAnimation(string targetAnim, bool isInteracting)
+        public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool isAttacking)
         {
             anim.applyRootMotion = isInteracting;
             anim.SetBool("isInteracting", isInteracting);
+            if (!isAttacking)
+            {
+                playerAttacker.lastAttack = "";
+            }
             anim.CrossFade(targetAnim, 0.2f);
         }
 
@@ -120,6 +127,26 @@ namespace Ulian
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.characterController.SimpleMove(velocity);
+        }
+
+        public void EnableCombo()
+        {
+            anim.SetBool("canDoCombo", true);
+        }
+
+        public void DisableCombo()
+        {
+            anim.SetBool("canDoCombo", false);
+        }
+
+        public void EnableJump()
+        {
+            anim.SetBool("canJump", true);
+        }
+        
+        public void DisableJump()
+        {
+            anim.SetBool("canJump", false);
         }
     }
 }

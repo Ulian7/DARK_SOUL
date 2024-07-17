@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2322620876946243089}
   - component: {fileID: 4183747916764384136}
   - component: {fileID: 2637406694767175710}
+  - component: {fileID: 8570118964287970563}
+  - component: {fileID: 3576980117372332355}
   m_Layer: 0
   m_Name: Sword_Mobile
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +85,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8570118964287970563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050887359806858389}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.9999948, y: 2.5029352, z: 0.3}
+  m_Center: {x: -0.0000035059315, y: 0.41606447, z: -0.00000403498}
+--- !u!114 &3576980117372332355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050887359806858389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c72490fdd7949c47bfbbf25e9f0183c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponDamage: 30
 --- !u!1 &6643945425107059219
 GameObject:
   m_ObjectHideFlags: 0

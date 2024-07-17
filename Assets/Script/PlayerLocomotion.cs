@@ -12,6 +12,9 @@ namespace Ulian
         Transform cameraObject;
         InputHandler inputHandler;
         public Vector3 moveDirection;
+        public float rollCost = 20;
+        public float sprintCost = 5;
+        private PlayerStats playerStats;
 
         [HideInInspector]
         public Transform myTransform;
@@ -50,6 +53,8 @@ namespace Ulian
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+
+            playerStats = playerManager.GetComponent<PlayerStats>();
         }
 
         #region Movement
@@ -88,7 +93,7 @@ namespace Ulian
 
             float speed = movementSpeed;
 
-            if (inputHandler.sprintFlag)
+            if (inputHandler.sprintFlag && playerStats.currentStamina < sprintCost * delta)
             {
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
@@ -111,31 +116,58 @@ namespace Ulian
 
         public void HandleRollingAndSprinting(float delta)
         {
-            if (animatorHandler.anim.GetBool("isInteracting"))
+            if (!inputHandler.rollFlag && inputHandler.inputBuffer != next_state.Roll)
                 return;
+            
+            if (animatorHandler.anim.GetBool("isInteracting"))
+            {
+                if (inputHandler.inputBuffer == next_state.Null && inputHandler.rollFlag)
+                {
+                    if (inputHandler.inputBuffer == next_state.Null)
+                    {
+                        inputHandler.inputBuffer = next_state.Roll;
+                        inputHandler.verticalBuffer = inputHandler.vertical;
+                        inputHandler.horizontalBuffer = inputHandler.horizontal;
+                    }
+                }
+
+                return;
+            }
 
             if (inputHandler.rollFlag)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
                 moveDirection += cameraObject.right * inputHandler.horizontal;
-                
-                if (inputHandler.moveAmount > 0){
-                    animatorHandler.PlayTargetAnimation("Rolling", true);
-                    moveDirection.y = 0;
-                    Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = rollRotation;
-                }
-                else
-                {
-                    animatorHandler.PlayTargetAnimation("Backstep", true);
-                }
-
             }
+            else
+            {
+                moveDirection = cameraObject.forward * inputHandler.verticalBuffer;
+                moveDirection += cameraObject.right * inputHandler.horizontalBuffer;
+            }
+
+
+            if (playerStats.currentStamina < rollCost)
+                return;
+                
+            if (moveDirection != Vector3.zero)
+            {
+                animatorHandler.PlayTargetAnimation("Rolling", true, false);
+                playerStats.TakeStaminaDamage(20);
+                moveDirection.y = 0;
+                Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+                myTransform.rotation = rollRotation;
+            }
+            else
+            {
+                animatorHandler.PlayTargetAnimation("Backstep", true, false);
+                playerStats.TakeStaminaDamage(10);
+            }
+
+            inputHandler.inputBuffer = next_state.Null;
         }
 
         public void HandleFalling(float delta, Vector3 moveDirection)
         {
-            playerManager.isGrounded = false;
             RaycastHit hit;
             Vector3 origin = myTransform.position;
             origin.y += groundDetectionRayStartPoint;
@@ -151,13 +183,13 @@ namespace Ulian
 
                     if (playerManager.isInAir)
                     {
-                        if (inAirTimer > 0.5)
+                        if (inAirTimer > 0.4f)
                         {
-                            animatorHandler.PlayTargetAnimation("Land", true);
+                            animatorHandler.PlayTargetAnimation("Land", true, false);
                         }
                         else
                         {
-                            //animatorHandler.PlayTargetAnimation("Empty", false);
+                            animatorHandler.PlayTargetAnimation("Empty", false, false);
                             inAirTimer = 0;
                         }
                         playerManager.isInAir = false;
@@ -172,14 +204,32 @@ namespace Ulian
 
                     if (playerManager.isInAir == false)
                     {
-                        if (playerManager.isInteracting == false)
-                        {
-                            animatorHandler.PlayTargetAnimation("Falling", true);
-                        }
-
                         playerManager.isInAir = true;
                     }
+                    
+                    if (playerManager.isInteracting == false && inAirTimer > 0.2f)
+                    {
+                        animatorHandler.PlayTargetAnimation("Falling", true, false);
+                    }
                 }
+            }
+        }
+
+        public void HandleJumping()
+        {
+            if (playerManager.isInteracting || !playerManager.canJump)
+                return;
+            if (inputHandler.jump_Input)
+            {
+                if (inputHandler.moveAmount > 0)
+                {
+                    moveDirection = cameraObject.forward * inputHandler.vertical;
+                    moveDirection += cameraObject.right * inputHandler.horizontal;
+                    moveDirection.y = 0;
+                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                    myTransform.rotation = jumpRotation;
+                }
+                animatorHandler.PlayTargetAnimation("Jump", false, false);
             }
         }
         #endregion
