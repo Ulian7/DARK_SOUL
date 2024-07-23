@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2055191624703791009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2029840805883378750}
+  m_Layer: 10
+  m_Name: Lock On Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2029840805883378750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055191624703791009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8285551450640069856}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5682418576407212644
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,6 +69,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 955819194554444502}
+  - {fileID: 2029840805883378750}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7629622463037019262
@@ -79,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9721d07477ba8954c9e1dfbfd38493b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraHandler: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   rollCost: 20
   sprintCost: 5
@@ -89,7 +122,7 @@ MonoBehaviour:
   minimumDistanceNeedToBeginFall: 2.5
   groundDetectionRayDistance: 0.3
   inAirTimer: 0
-  movementSpeed: 5
+  movementSpeed: 4
   sprintSpeed: 7
   rotationSpeed: 10
 --- !u!114 &2963943575810957764
@@ -107,14 +140,29 @@ MonoBehaviour:
   horizontal: 0
   vertical: 0
   moveAmount: 0
+  mouseX: 0
+  mouseY: 0
+  mouseX_pre: 0
   a_Input: 0
   b_Input: 0
   rb_Input: 0
   shift_Input: 0
+  jump_Input: 0
+  inventory_Input: 0
+  lockOn_Input: 0
+  inputBuffer: 0
+  horizontalBuffer: 0
+  verticalBuffer: 0
   rollFlag: 0
   sprintFlag: 0
   comboFlag: 0
+  lockOnFlag: 0
+  turnLeftFlag: 0
+  turnRightFlag: 0
+  inventoryFlag: 0
   rollInputTimer: 0
+  changeLockTime: 0
+  cameraHandler: {fileID: 0}
 --- !u!114 &712210302614740511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,11 +175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b5b1c419da0ef49ac76de5c705f407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockOnTransform: {fileID: 0}
+  interactableUI: {fileID: 0}
+  interactableUIGameObject: {fileID: 0}
   isInteracting: 0
   isSprinting: 0
   isInAir: 0
   isGrounded: 0
   canDoCombo: 0
+  canJump: 0
 --- !u!143 &-3976240805010961134
 CharacterController:
   m_ObjectHideFlags: 0

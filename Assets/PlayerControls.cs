@@ -174,6 +174,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""69fbcaa0-c9e1-4d5f-8be4-c9f000a7608b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -242,6 +251,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0559dfc8-4d86-44b7-be90-bf7d9f690cdd"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -259,6 +279,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
+        m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -379,6 +400,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_A;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Inventory;
+    private readonly InputAction m_PlayerActions_LockOn;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -388,6 +410,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @A => m_Wrapper.m_PlayerActions_A;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
+        public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,6 +435,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @LockOn.started += instance.OnLockOn;
+            @LockOn.performed += instance.OnLockOn;
+            @LockOn.canceled += instance.OnLockOn;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -431,6 +457,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @LockOn.started -= instance.OnLockOn;
+            @LockOn.performed -= instance.OnLockOn;
+            @LockOn.canceled -= instance.OnLockOn;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -460,5 +489,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnA(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
 }
