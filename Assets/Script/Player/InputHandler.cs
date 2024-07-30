@@ -67,6 +67,7 @@ namespace Ulian
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
             uiManager = FindObjectOfType<UIManager>();
+            Cursor.visible = false;
         }
 
         private void LateUpdate()
@@ -77,22 +78,56 @@ namespace Ulian
             }
         }
 
+        private void OnMove(InputAction.CallbackContext i)
+        {
+            movementInput = i.ReadValue<Vector2>();
+        }
+
+        private void OnMouseX(InputAction.CallbackContext i)
+        {
+            mouseX = i.ReadValue<Vector2>().x;
+        }
+        
+        private void OnMouseY(InputAction.CallbackContext i)
+        {
+            mouseY = i.ReadValue<Vector2>().y;
+        }
+
+        private void OnRB(InputAction.CallbackContext i)
+        {
+            rb_Input = true;
+        }
+
+        private void OnA(InputAction.CallbackContext i)
+        {
+            a_Input = true;
+        }
+        
+        private void OnJump(InputAction.CallbackContext i)
+        {
+            jump_Input = true;
+        }
+        
+        private void OnLockOn(InputAction.CallbackContext i)
+        {
+            lockOn_Input = true;
+        }
+        
+        
+        
         public void OnEnable()
         {
             if (inputActions == null)
             {
                 inputActions = new PlayerControls();
-
-                //TODO: 为什么Horizontal和Vertical只会是整数
-                inputActions.PlayMovement.Movement.performed +=
-                    inputActions => movementInput = inputActions.ReadValue<Vector2>();
-                inputActions.PlayMovement.Camera.performed += i => mouseX = i.ReadValue<Vector2>().x;
-                inputActions.PlayMovement.Camera.performed += i => mouseY = i.ReadValue<Vector2>().y;
-                inputActions.PlayerActions.RB.performed += i => rb_Input = true;
-                inputActions.PlayerActions.A.performed += i => a_Input = true;
-                inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
+                inputActions.PlayMovement.Movement.performed += OnMove;
+                inputActions.PlayMovement.Camera.performed += OnMouseX;
+                inputActions.PlayMovement.Camera.performed += OnMouseY;
+                inputActions.PlayerActions.RB.performed += OnRB;
+                inputActions.PlayerActions.A.performed += OnA;
+                inputActions.PlayerActions.Jump.performed += OnJump;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
-                inputActions.PlayerActions.LockOn.performed += i => lockOn_Input = true;
+                inputActions.PlayerActions.LockOn.performed += OnLockOn;
             }
 
             inputActions.Enable();
@@ -250,15 +285,19 @@ namespace Ulian
                 inventoryFlag = !inventoryFlag;
                 if (inventoryFlag)
                 {
+                    ClearDelegation();
                     uiManager.OpenSelectWindow();
                     uiManager.UpdateUI();
                     uiManager.hudWindow.SetActive(false);
+                    Cursor.visible = true;
                 }
                 else
                 {
+                    RecoverDelegation();
                     uiManager.CloseSelectWindow();
                     uiManager.CloseAllInventoryWindows();
                     uiManager.hudWindow.SetActive(true);
+                    Cursor.visible = false;
                 }
             }
         }
@@ -333,6 +372,28 @@ namespace Ulian
             yield return null;
             cameraHandler.SwitchToLockOn();
             StartCoroutine("LockOn");
+        }
+
+        private void ClearDelegation()
+        {
+            inputActions.PlayMovement.Movement.performed -= OnMove;
+            inputActions.PlayMovement.Camera.performed -= OnMouseX;
+            inputActions.PlayMovement.Camera.performed -= OnMouseY;
+            inputActions.PlayerActions.RB.performed -= OnRB;
+            inputActions.PlayerActions.A.performed -= OnA;
+            inputActions.PlayerActions.Jump.performed -= OnJump;
+            inputActions.PlayerActions.LockOn.performed -= OnLockOn;
+        }
+
+        private void RecoverDelegation()
+        {
+            inputActions.PlayMovement.Movement.performed += OnMove;
+            inputActions.PlayMovement.Camera.performed += OnMouseX;
+            inputActions.PlayMovement.Camera.performed += OnMouseY;
+            inputActions.PlayerActions.RB.performed += OnRB;
+            inputActions.PlayerActions.A.performed += OnA;
+            inputActions.PlayerActions.Jump.performed += OnJump;
+            inputActions.PlayerActions.LockOn.performed += OnLockOn;
         }
     }
 }

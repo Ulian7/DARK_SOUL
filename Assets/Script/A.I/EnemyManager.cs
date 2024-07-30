@@ -7,25 +7,34 @@ namespace Ulian
 {
     public class EnemyManager : CharacterManager
     {
-        private bool isPerforming;
+        public EnemyLocomotionManager enemyLocomotionManager;
+        public EnemyAnimatorManager enemyAnimatorManager;
+        public bool isPerformingAction;
         [Header("A.I Settings")] 
-        public float detectionRadius;
+        public float detectionRadius = 20;
 
         public float maxDetectionAngle = 50;
         public float minDetectionAngle = -50;
         private void Awake()
         {
-            
+            enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            
+            HandleCurrentAction();
         }
 
         private void HandleCurrentAction()
         {
-            
+            if (enemyLocomotionManager == null)
+            {
+                enemyLocomotionManager.HandleDetection();
+            }
+            else
+            {
+                //enemyLocomotionManager.HandleMoveToTarget();
+            }
         }
     }
 }

@@ -5,10 +5,9 @@ using UnityEngine.UIElements;
 
 namespace Ulian
 {
-    public class AnimatorHandler : MonoBehaviour
+    public class AnimatorHandler : AnimatorManager
     {
         PlayerManager playerManager;
-        public Animator anim;
         InputHandler inputHandler;
         PlayerLocomotion playerLocomotion;
         PlayerAttacker playerAttacker;

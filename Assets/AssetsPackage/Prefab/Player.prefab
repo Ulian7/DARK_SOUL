@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2029840805883378750}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Lock On Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1216732288027800980}
   - component: {fileID: 2511121608926471139}
   - component: {fileID: 3767053583640463391}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -162,6 +162,7 @@ MonoBehaviour:
   inventoryFlag: 0
   rollInputTimer: 0
   changeLockTime: 0
+  lockOnShowed: 0
   cameraHandler: {fileID: 0}
 --- !u!114 &712210302614740511
 MonoBehaviour:
